@@ -11,5 +11,5 @@ jobs:
             with:
             source_repo: 'https://github.com/TBXark/ChatGPT-Telegram-Workers'
             target_repo: 'https://github.com/YuLeiFuYun/ChatGPT-Telegram-Workers.git‘
-            github_token: ${{ secrets.ChatGPT_Telegram_Token }} 
+            github_token: ${{ secrets.CHATGPT_TELEGRAM_TOKEN }} 
             source_branch: 'master'
