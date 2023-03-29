@@ -1,15 +1,26 @@
 name: Sync
+
 on:
   schedule:
-    - cron: '0 4 * * *'
+    - cron: '0 22 * * *' # Runs daily at 00:00 UTC
+  workflow_dispatch: # Allows manual triggering
+
 jobs:
   sync:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Sync
-        uses: repo-sync/github-sync@v2
-        with:
-          source_repo: 'https://github.com/TBXark/ChatGPT-Telegram-Workers'
-          destination_branch: 'master'
-          github_token: ${{ secrets.CHATGPT_TELEGRAM_TOKEN }} 
-          source_branch: 'master'
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        ref: master # Replace with the default branch of your fork
+
+    - name: Fetch Upstream
+      run: |
+        git remote add upstream https://github.com/TBXark/ChatGPT-Telegram-Workers.git
+        git fetch upstream
+
+    - name: Merge and Push
+      run: |
+        git merge upstream/master --no-edit # Replace with the default branch of the original repository
+        git push
