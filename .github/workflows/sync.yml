@@ -2,7 +2,7 @@ name: Sync Fork
 
 on:
   schedule:
-    - cron: '0 15 * * *'
+    - cron: '0 18 * * *'
   workflow_dispatch: # on button click
 
 jobs:
@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: tgymnich/fork-sync@v1.8
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.CHATGPT_TELEGRAM_TOKEN }}
           owner: TBXark
           base: master
           head: master
